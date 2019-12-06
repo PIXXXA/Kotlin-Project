@@ -25,7 +25,6 @@ class RecyclerViewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapt: RecyclerView.Adapter<*>
         val layoutManager: RecyclerView.LayoutManager
 
         val exampleItems = ArrayList<RecyclerViewEntity>()
@@ -36,7 +35,7 @@ class RecyclerViewFragment : Fragment() {
         val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(activity)
-        adapt = RecyclerViewAdapter(exampleItems, context)
+        val adapt = RecyclerViewAdapter(exampleItems)
         recyclerView.adapter = adapt
         recyclerView.layoutManager = layoutManager
 

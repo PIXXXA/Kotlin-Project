@@ -9,7 +9,9 @@ import android.widget.FrameLayout
 import android.widget.TextView
 
 import com.firsttask.itransition.R
+import com.firsttask.itransition.RetrofitClass
 import com.firsttask.itransition.fragment.SecondScreenFragment
+import java.nio.file.Paths.get
 
 class SecondActivity : AppCompatActivity() {
 
@@ -19,20 +21,22 @@ class SecondActivity : AppCompatActivity() {
         setContentView(R.layout.activity_second)
         var text1 = ""
         var text2 = ""
-        val intent = intent
+
         if (intent != null) {
             text1 = intent.getStringExtra(DATA)
             text2 = intent.getStringExtra(TEMP)
         }
+
+
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        val fragmentTransaction1 = SecondScreenFragment.newInstance(text1, text2)
-        fragmentTransaction.replace(R.id.frameLayout, fragmentTransaction1)
+        val fragment = SecondScreenFragment.newInstance(text1, text2)
+        fragmentTransaction.replace(R.id.frameLayout, fragment)
         fragmentTransaction.commit()
     }
 
     companion object {
-        private val DATA = "Data"
-        private val TEMP = "Temp"
+        private const val DATA = "Data"
+        private const val TEMP = "Temp"
     }
 }
 

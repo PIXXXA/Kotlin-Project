@@ -27,7 +27,6 @@ class SecondScreenFragment : Fragment() {
     }
 
     companion object {
-
         private const val STR1 = "TB1"
         private const val STR2 = "TB2"
 
