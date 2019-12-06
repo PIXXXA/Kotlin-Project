@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClass {
 
-    private final String baseUrl= "http://dataservice.accuweather.com";
+    private final String baseUrl = "http://dataservice.accuweather.com";
     private Gson gson = new GsonBuilder().create();
     private final String key = "VsjRvwV3ZtcUFlMdDiZSeQW3u8f4Ol0m";
 
@@ -21,7 +21,9 @@ public class RetrofitClass {
 
     private AccuWeatherClient accuWeatherClient = retrofit.create(AccuWeatherClient.class);
 
-    SecondActivity secondActivity = new SecondActivity();
+    private SecondActivity secondActivity = new SecondActivity();
 
-    Call<Object> call = accuWeatherClient.getLocationCode(key, );
+    Call<Object> call = accuWeatherClient.getLocationCode(key, secondActivity.getText1());
+
+    AccuWeatherGson accuWeatherGson =new AccuWeatherGson(gson.fromJson(GsonConverterFactory.create()).toString());
 }

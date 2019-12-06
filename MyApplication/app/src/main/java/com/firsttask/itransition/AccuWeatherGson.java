@@ -1,13 +1,14 @@
 package com.firsttask.itransition;
 
-import com.google.gson.annotations.SerializedName;
-
 public class AccuWeatherGson {
-    @SerializedName("Key")
     private String Key;
 
     public String getKey() {
         return Key;
+    }
+
+    public AccuWeatherGson(String key) {
+        Key = key;
     }
 
     public void setKey(String key) {

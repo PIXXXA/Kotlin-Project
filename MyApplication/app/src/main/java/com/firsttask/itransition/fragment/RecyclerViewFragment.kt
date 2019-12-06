@@ -29,8 +29,8 @@ class RecyclerViewFragment : Fragment() {
 
         val exampleItems = ArrayList<RecyclerViewEntity>()
 
-        exampleItems.add(RecyclerViewEntity("25.01.2019", "1* C"))
-        exampleItems.add(RecyclerViewEntity("26.01.2019", "-1* C"))
+        exampleItems.add(RecyclerViewEntity("25.01.2019", "52,27"))
+        exampleItems.add(RecyclerViewEntity("26.01.2019", "29,52"))
 
         val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.setHasFixedSize(true)

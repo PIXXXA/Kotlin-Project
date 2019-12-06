@@ -15,11 +15,12 @@ import java.nio.file.Paths.get
 
 class SecondActivity : AppCompatActivity() {
 
+    var text1 = ""
+
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-        var text1 = ""
         var text2 = ""
 
         if (intent != null) {
@@ -27,11 +28,14 @@ class SecondActivity : AppCompatActivity() {
             text2 = intent.getStringExtra(TEMP)
         }
 
-
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val fragment = SecondScreenFragment.newInstance(text1, text2)
         fragmentTransaction.replace(R.id.frameLayout, fragment)
         fragmentTransaction.commit()
+    }
+
+    private fun get(): String{
+        return text1
     }
 
     companion object {
