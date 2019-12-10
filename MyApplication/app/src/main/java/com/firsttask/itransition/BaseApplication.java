@@ -2,20 +2,18 @@ package com.firsttask.itransition;
 
 import android.app.Application;
 
-public class BaseApplication extends Application{
-    public LocationCodeRetrofitClass locationCodeRetrofitClass;
-    public WeatherRetrofitClass weatherRetrofitClass;
+import com.firsttask.itransition.retrofit.AccuweatherRetrofit;
+
+public class BaseApplication extends Application {
+    private AccuweatherRetrofit accuweatherRetrofit;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        locationCodeRetrofitClass = new LocationCodeRetrofitClass();
-        weatherRetrofitClass = new WeatherRetrofitClass();
+        accuweatherRetrofit = new AccuweatherRetrofit();
     }
 
-    public LocationCodeRetrofitClass getLocationCodeRetrofitClass() { return locationCodeRetrofitClass; }
-
-    public WeatherRetrofitClass getWeatherRetrofitClass() {
-        return weatherRetrofitClass;
+    public AccuweatherRetrofit getAccuweatherRetrofit() {
+        return accuweatherRetrofit;
     }
 }

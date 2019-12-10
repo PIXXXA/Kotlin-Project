@@ -5,14 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.firsttask.itransition.DATA
 import com.firsttask.itransition.R
+import com.firsttask.itransition.TEMP
 import com.firsttask.itransition.activity.SecondActivity
 import com.firsttask.itransition.entity.RecyclerViewEntity
 import kotlinx.android.synthetic.main.recycler_view_item.view.*
 import java.util.*
 
-class RecyclerViewAdapter(private val recyclerViewEntityItem: ArrayList<RecyclerViewEntity>)
-    : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
+class RecyclerViewAdapter(private val recyclerViewEntityItem: ArrayList<RecyclerViewEntity>) : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): MyViewHolder {
@@ -38,8 +39,8 @@ class RecyclerViewAdapter(private val recyclerViewEntityItem: ArrayList<Recycler
 
             itemView.setOnClickListener { v ->
                 val intent = Intent(v.context, SecondActivity::class.java)
-                intent.putExtra("Data", recyclerViewEntity.data)
-                intent.putExtra("Temp", recyclerViewEntity.temp)
+                intent.putExtra(DATA, recyclerViewEntity.data)
+                intent.putExtra(TEMP, recyclerViewEntity.temp)
                 v.context.startActivity(intent)
             }
         }

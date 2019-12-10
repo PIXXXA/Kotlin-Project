@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.firsttask.itransition.R
+import com.firsttask.itransition.STR1
+import com.firsttask.itransition.STR2
 import kotlinx.android.synthetic.main.activity_for_second_fragment.*
 
 class SecondScreenFragment : Fragment() {
@@ -28,9 +30,6 @@ class SecondScreenFragment : Fragment() {
     }
 
     companion object {
-        private const val STR1 = "TB1"
-        private const val STR2 = "TB2"
-
         fun newInstance(SomeText1: String, someText2: String): SecondScreenFragment {
             val secondScreenFragment = SecondScreenFragment()
             val bundle = Bundle()
