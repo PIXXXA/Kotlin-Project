@@ -1,13 +1,12 @@
 package com.firsttask.itransition.activity
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.firsttask.itransition.*
-import com.firsttask.itransition.adapter.DailyForecasts
-import com.firsttask.itransition.adapter.WeatherLocationGSONAdapter
 import com.firsttask.itransition.fragment.SecondScreenFragment
+import com.firsttask.itransition.rest.model.ApiResponse
+import com.firsttask.itransition.rest.model.WeatherResponse
 import kotlinx.android.synthetic.main.activity_for_second_fragment.*
 import retrofit2.Call
 import retrofit2.Response
@@ -24,27 +23,29 @@ class SecondActivity : AppCompatActivity() {
             text1 = intent.getStringExtra(DATA)
             text2 = intent.getStringExtra(TEMP)
         }
-        val locationKeyRequest = (application as BaseApplication).accuweatherRetrofit
+        val locationKeyRequest = (application as BaseApplication).restClient
         val locationCodeRequest = locationKeyRequest.getDailyForecast()?.getLocationCode(KEY, text2)
-        locationCodeRequest?.enqueue(object : retrofit2.Callback<WeatherLocationGSONAdapter> {
-            override fun onFailure(call: Call<WeatherLocationGSONAdapter>, t: Throwable) {
+        locationCodeRequest?.enqueue(object : retrofit2.Callback<ApiResponse> {
+            override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                 Log.d(TAG, t.localizedMessage)
             }
 
-            override fun onResponse(call: Call<WeatherLocationGSONAdapter>, response: Response<WeatherLocationGSONAdapter>) {
+            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                 textView?.text = response.body()?.key
 
-                val weatherKeyRequest = (application as BaseApplication).accuweatherRetrofit
+                val weatherKeyRequest = (application as BaseApplication).restClient
                 val weatherRequest = weatherKeyRequest.getDailyForecast()?.getWeather(textView?.text.toString(), KEY)
-                weatherRequest?.enqueue(object : retrofit2.Callback<DailyForecasts> {
-                    override fun onFailure(call: Call<DailyForecasts>, t: Throwable) {
+                weatherRequest?.enqueue(object : retrofit2.Callback<WeatherResponse> {
+                    override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
                         Log.d(TAG, t.localizedMessage)
                     }
 
-                    @SuppressLint("SetTextI18n")
-                    override fun onResponse(call: Call<DailyForecasts>, response: Response<DailyForecasts>) {
+                    override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
                         val weatherResponse = response.body()
-                        textView3?.text = "${getString(R.string.tempMax)}${weatherResponse?.temp?.maximum.toString()}\n${getString(R.string.date)}${weatherResponse?.date.toString()}\n${getString(R.string.tempMin)}${weatherResponse?.temp?.minimum.toString()}\n"
+
+                        val stringBuilder = "${getString(R.string.temp)}${weatherResponse?.dailyForecasts?.temperature}" +
+                                "\n${getString(R.string.date)}${weatherResponse?.dailyForecasts?.nowDate}"
+                        textView3?.text = stringBuilder
                     }
                 })
             }
@@ -56,3 +57,4 @@ class SecondActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     }
 }
+

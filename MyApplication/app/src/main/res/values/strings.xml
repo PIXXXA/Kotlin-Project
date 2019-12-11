@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Itransition</string>
-    <string name="tempMax">Max temperature : </string>
+    <string name="temp">Temperature : </string>
     <string name="date">Date : </string>
-    <string name="tempMin">Min temperature : </string>
 </resources>

@@ -26,7 +26,6 @@ class RecyclerViewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val layoutManager: RecyclerView.LayoutManager
-
         val exampleItems = ArrayList<RecyclerViewEntity>()
 
         exampleItems.add(RecyclerViewEntity("25.01.2019", "52,27"))

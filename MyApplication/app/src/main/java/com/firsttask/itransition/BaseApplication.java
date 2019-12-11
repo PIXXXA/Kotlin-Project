@@ -2,18 +2,16 @@ package com.firsttask.itransition;
 
 import android.app.Application;
 
-import com.firsttask.itransition.retrofit.AccuweatherRetrofit;
+import com.firsttask.itransition.rest.RestClient;
 
 public class BaseApplication extends Application {
-    private AccuweatherRetrofit accuweatherRetrofit;
-
+    private RestClient restClient;
     @Override
     public void onCreate() {
         super.onCreate();
-        accuweatherRetrofit = new AccuweatherRetrofit();
+        restClient = new RestClient();
     }
-
-    public AccuweatherRetrofit getAccuweatherRetrofit() {
-        return accuweatherRetrofit;
+    public RestClient getRestClient() {
+        return restClient;
     }
 }
