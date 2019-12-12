@@ -12,6 +12,7 @@ class RestClient {
 
     init {
         val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
                 .build()

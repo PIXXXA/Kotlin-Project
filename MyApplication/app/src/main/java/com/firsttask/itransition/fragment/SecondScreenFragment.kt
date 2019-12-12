@@ -26,7 +26,6 @@ class SecondScreenFragment : Fragment() {
             textView1.text = someText1
             textView2.text = someText2
         }
-
     }
 
     companion object {

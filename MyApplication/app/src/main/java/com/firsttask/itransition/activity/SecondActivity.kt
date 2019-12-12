@@ -43,9 +43,13 @@ class SecondActivity : AppCompatActivity() {
                     override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
                         val weatherResponse = response.body()
 
-                        val stringBuilder = "${getString(R.string.temp)}${weatherResponse?.dailyForecasts?.temperature}" +
-                                "\n${getString(R.string.date)}${weatherResponse?.dailyForecasts?.nowDate}"
-                        textView3?.text = stringBuilder
+                        weatherResponse?.let { getWeather ->
+                            val stringBuilder =
+                                    "${getString(R.string.date)}${getWeather.dailyForecasts?.first()?.nowDate}" +
+                                            "\n${getString(R.string.temp_max)}${getWeather.dailyForecasts?.first()?.temperature?.maximum?.valueMax}" +
+                                            "\n${getString(R.string.temp_min)}${getWeather.dailyForecasts?.first()?.temperature?.minimum?.valueMin}"
+                            textView3?.text = stringBuilder
+                        }
                     }
                 })
             }

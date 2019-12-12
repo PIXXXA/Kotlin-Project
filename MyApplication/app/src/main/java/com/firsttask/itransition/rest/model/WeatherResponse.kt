@@ -4,15 +4,15 @@ import com.google.gson.annotations.SerializedName
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
-@JsonIgnoreProperties("Te")
+@JsonIgnoreProperties(ignoreUnknown = true)
 class WeatherResponse {
     @SerializedName("DailyForecasts")
-    var dailyForecasts: DailyForecasts? = null
+    var dailyForecasts: List<DailyForecasts>? = null
 }
 
 class DailyForecasts {
     @SerializedName("Temperature")
-    var temperature: ArrayList<Temperature>? = null
+    var temperature: Temperature? = null
     @SerializedName("Date")
     var nowDate: String? = null
 }
