@@ -2,9 +2,6 @@ package com.firsttask.itransition.rest.model
 
 import com.google.gson.annotations.SerializedName
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 class WeatherResponse {
     @SerializedName("DailyForecasts")
     var dailyForecasts: List<DailyForecasts>? = null

@@ -5,27 +5,43 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.firsttask.itransition.R
-import com.firsttask.itransition.STR1
-import com.firsttask.itransition.STR2
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import com.firsttask.itransition.*
+import com.firsttask.itransition.rest.model.ApiResponse
+import com.firsttask.itransition.rest.model.WeatherResponse
+import com.firsttask.itransition.viewModel.SecondFragmentViewModel
 import kotlinx.android.synthetic.main.activity_for_second_fragment.*
+import retrofit2.Call
+import retrofit2.Response
 
-class SecondScreenFragment : Fragment() {
+class SecondScreenFragment : Fragment(){
+
+    private lateinit var model: SecondFragmentViewModel
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+
         return inflater.inflate(R.layout.activity_for_second_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (arguments != null) {
-            val someText1 = arguments!!.getString(STR1)
-            val someText2 = arguments!!.getString(STR2)
-            textView1.text = someText1
-            textView2.text = someText2
+
+            model = ViewModelProviders.of(this).get(SecondFragmentViewModel::class.java)
+            model.a1 = arguments?.getString(STR1)
+            model.a2 = arguments?.getString(STR2)
+            textView1.text = model.a1
+            textView2.text = model.a2
+            model.getWeather()
+            val bodeKeyObserver = Observer<String> { newName -> textView.text = newName }
+            model.getbodyKey().observe(this , bodeKeyObserver)
+            val weatherObserver = Observer<String> { newName -> textView3.text = newName }
+            model.getweather().observe(this , weatherObserver)
         }
+
     }
 
     companion object {

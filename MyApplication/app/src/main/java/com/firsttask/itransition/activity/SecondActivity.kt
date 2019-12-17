@@ -1,15 +1,13 @@
 package com.firsttask.itransition.activity
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.firsttask.itransition.*
+import androidx.lifecycle.ViewModelProviders
+import com.firsttask.itransition.DATA
+import com.firsttask.itransition.R
+import com.firsttask.itransition.TEMP
 import com.firsttask.itransition.fragment.SecondScreenFragment
-import com.firsttask.itransition.rest.model.ApiResponse
-import com.firsttask.itransition.rest.model.WeatherResponse
-import kotlinx.android.synthetic.main.activity_for_second_fragment.*
-import retrofit2.Call
-import retrofit2.Response
+import com.firsttask.itransition.viewModel.SecondFragmentViewModel
 
 class SecondActivity : AppCompatActivity() {
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
@@ -23,38 +21,6 @@ class SecondActivity : AppCompatActivity() {
             text1 = intent.getStringExtra(DATA)
             text2 = intent.getStringExtra(TEMP)
         }
-        val locationKeyRequest = (application as BaseApplication).restClient
-        val locationCodeRequest = locationKeyRequest.getDailyForecast()?.getLocationCode(KEY, text2)
-        locationCodeRequest?.enqueue(object : retrofit2.Callback<ApiResponse> {
-            override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
-                Log.d(TAG, t.localizedMessage)
-            }
-
-            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
-                textView?.text = response.body()?.key
-
-                val weatherKeyRequest = (application as BaseApplication).restClient
-                val weatherRequest = weatherKeyRequest.getDailyForecast()?.getWeather(textView?.text.toString(), KEY)
-                weatherRequest?.enqueue(object : retrofit2.Callback<WeatherResponse> {
-                    override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
-                        Log.d(TAG, t.localizedMessage)
-                    }
-
-                    override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
-                        val weatherResponse = response.body()
-
-                        weatherResponse?.let { getWeather ->
-                            val stringBuilder =
-                                    "${getString(R.string.date)}${getWeather.dailyForecasts?.first()?.nowDate}" +
-                                            "\n${getString(R.string.temp_max)}${getWeather.dailyForecasts?.first()?.temperature?.maximum?.valueMax}" +
-                                            "\n${getString(R.string.temp_min)}${getWeather.dailyForecasts?.first()?.temperature?.minimum?.valueMin}"
-                            textView3?.text = stringBuilder
-                        }
-                    }
-                })
-            }
-        })
-
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val fragment = SecondScreenFragment.newInstance(text1, text2)
         fragmentTransaction.replace(R.id.frameLayout, fragment)
