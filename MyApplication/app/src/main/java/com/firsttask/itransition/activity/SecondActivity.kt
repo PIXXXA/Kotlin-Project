@@ -3,6 +3,7 @@ package com.firsttask.itransition.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import com.firsttask.itransition.BaseApplication
 import com.firsttask.itransition.DATA
 import com.firsttask.itransition.R
 import com.firsttask.itransition.TEMP
@@ -21,6 +22,7 @@ class SecondActivity : AppCompatActivity() {
             text1 = intent.getStringExtra(DATA)
             text2 = intent.getStringExtra(TEMP)
         }
+
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val fragment = SecondScreenFragment.newInstance(text1, text2)
         fragmentTransaction.replace(R.id.frameLayout, fragment)
