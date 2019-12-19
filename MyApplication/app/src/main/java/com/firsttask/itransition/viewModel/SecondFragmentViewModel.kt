@@ -10,13 +10,14 @@ import com.firsttask.itransition.TAG
 import com.firsttask.itransition.rest.RestClient
 import com.firsttask.itransition.rest.model.ApiResponse
 import com.firsttask.itransition.rest.model.WeatherResponse
+import com.firsttask.itransition.ResourceProvider
 import retrofit2.Call
 import retrofit2.Response
 
-class SecondFragmentViewModel(val restClient: RestClient, val coordAdapter: String) : ViewModel() {
+class SecondFragmentViewModel(val restClient: RestClient, val coordAdapter: String, val dateAdapter: String, resourceProvider: ResourceProvider) : ViewModel() {
 
-    private val bodyKey = MutableLiveData<String>()
-    private val weather = MutableLiveData<String>()
+    val bodyKey = MutableLiveData<String>()
+    val weather = MutableLiveData<String>()
 
     init {
 
@@ -36,16 +37,13 @@ class SecondFragmentViewModel(val restClient: RestClient, val coordAdapter: Stri
                     override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
                     }
 
-//                    ${getApplication<BaseApplication>().getString(R.string.temp_max)}
-//                    ${getApplication<BaseApplication>().getString(R.string.temp_min)}
-
                     override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
                         val weatherResponse = response.body()
                         weatherResponse?.let { getWeather ->
                             val stringBuilder =
                                     "${(R.string.date)}${getWeather.dailyForecasts?.first()?.nowDate}" +
-                                            "\n${getWeather.dailyForecasts?.first()?.temperature?.maximum?.valueMax}" +
-                                            "\n${getWeather.dailyForecasts?.first()?.temperature?.minimum?.valueMin}"
+                                            "\n${resourceProvider.getString(R.string.temp_max)}${getWeather.dailyForecasts?.first()?.temperature?.maximum?.valueMax}" +
+                                            "\n${resourceProvider.getString(R.string.temp_min)}${getWeather.dailyForecasts?.first()?.temperature?.minimum?.valueMin}"
                             weather.value = stringBuilder
                         }
                     }
