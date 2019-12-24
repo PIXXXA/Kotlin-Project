@@ -6,20 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.firsttask.itransition.BaseApplication
 import com.firsttask.itransition.R
 import com.firsttask.itransition.STR1
 import com.firsttask.itransition.STR2
+import com.firsttask.itransition.databinding.ActivityForSecondFragmentBinding
 import com.firsttask.itransition.viewModel.SecondFragmentViewModel
 import com.firsttask.itransition.viewModel.viewModelFactory.SecondFragmentViewModelFactory
-import kotlinx.android.synthetic.main.activity_for_second_fragment.*
-
 
 class SecondScreenFragment : Fragment() {
 
-    private lateinit var binding: SecondScreenFragmentBinding
+    private lateinit var binding: ActivityForSecondFragmentBinding
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -36,21 +34,15 @@ class SecondScreenFragment : Fragment() {
 
             val textSTR1 = arguments?.getString(STR1)
             val textSTR2 = arguments?.getString(STR2)
-            textView1.text = textSTR1
-            textView2.text = textSTR2
 
             val sdf = activity?.application as BaseApplication
 
             val viewModelFactory = SecondFragmentViewModelFactory(sdf.restClient, textSTR2.toString(), textSTR1.toString(), sdf.secondFragmentResourceProvider)
             val viewModel = ViewModelProviders.of(this, viewModelFactory)
                     .get(SecondFragmentViewModel::class.java)
+            binding.lifecycleOwner = this
 
             binding.secondViewModel = viewModel
-
-            val bodeKeyObserver = Observer<String> { newName -> textView.text = newName }
-            viewModel.getbodyKey().observe(this, bodeKeyObserver)
-            val weatherObserver = Observer<String> { newName -> textView3.text = newName }
-            viewModel.getweather().observe(this, weatherObserver)
 
         }
     }

@@ -4,7 +4,6 @@
     tools:context=".fragment.SecondScreenFragment">
 
     <data>
-
         <variable
             name="secondViewModel"
             type="com.firsttask.itransition.viewModel.SecondFragmentViewModel" />
@@ -37,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@{secondViewModel.bodyKey}" />
+            android:text="@{ secondViewModel.bodyKey}" />
 
         <TextView
             android:id="@+id/textView3"

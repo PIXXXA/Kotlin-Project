@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.firsttask.itransition.rest.RestClient
 import com.firsttask.itransition.ResourceProvider
 
-class SecondFragmentViewModelFactory(private val restClient: RestClient, val coordAdapter: String, val dateAdapter: String,
-                                     val resourceProvider: ResourceProvider)
+class SecondFragmentViewModelFactory(private val restClient: RestClient, private val coordAdapter: String, private val dateAdapter: String,
+                                     private val resourceProvider: ResourceProvider)
     : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
