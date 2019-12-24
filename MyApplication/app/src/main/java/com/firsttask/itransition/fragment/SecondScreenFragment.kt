@@ -35,9 +35,9 @@ class SecondScreenFragment : Fragment() {
             val textSTR1 = arguments?.getString(STR1)
             val textSTR2 = arguments?.getString(STR2)
 
-            val sdf = activity?.application as BaseApplication
+            val application = activity?.application as BaseApplication
 
-            val viewModelFactory = SecondFragmentViewModelFactory(sdf.restClient, textSTR2.toString(), textSTR1.toString(), sdf.secondFragmentResourceProvider)
+            val viewModelFactory = SecondFragmentViewModelFactory(application.restClient, textSTR2.toString(), textSTR1.toString(), application.secondFragmentResourceProvider)
             val viewModel = ViewModelProviders.of(this, viewModelFactory)
                     .get(SecondFragmentViewModel::class.java)
             binding.lifecycleOwner = this
