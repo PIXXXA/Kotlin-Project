@@ -1,16 +1,15 @@
 package com.firsttask.itransition.viewModel
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.firsttask.itransition.KEY
 import com.firsttask.itransition.R
+import com.firsttask.itransition.ResourceProvider
 import com.firsttask.itransition.TAG
 import com.firsttask.itransition.rest.RestClient
 import com.firsttask.itransition.rest.model.ApiResponse
 import com.firsttask.itransition.rest.model.WeatherResponse
-import com.firsttask.itransition.ResourceProvider
 import retrofit2.Call
 import retrofit2.Response
 
@@ -50,13 +49,5 @@ class SecondFragmentViewModel(val restClient: RestClient, val coordAdapter: Stri
                 })
             }
         })
-    }
-
-    fun getbodyKey(): LiveData<String> {
-        return bodyKey
-    }
-
-    fun getweather(): LiveData<String> {
-        return weather
     }
 }
