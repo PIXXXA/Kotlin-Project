@@ -17,9 +17,9 @@ class SecondFragmentViewModel(val restClient: RestClient, val coordAdapter: Stri
 
     val bodyKey = MutableLiveData<String>()
     val weather = MutableLiveData<String>()
+    val imageUrl = "https://i.pinimg.com/originals/84/c5/97/84c597187f11c618c2558f57ac83f8de.jpg"
 
     init {
-
         val getWeatherResponse = restClient.getDailyForecast()?.getLocationCode(KEY, coordAdapter)
         getWeatherResponse?.enqueue(object : retrofit2.Callback<ApiResponse> {
             override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
