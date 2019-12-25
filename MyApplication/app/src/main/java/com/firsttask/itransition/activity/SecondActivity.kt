@@ -2,13 +2,10 @@ package com.firsttask.itransition.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
-import com.firsttask.itransition.BaseApplication
 import com.firsttask.itransition.DATA
 import com.firsttask.itransition.R
 import com.firsttask.itransition.TEMP
 import com.firsttask.itransition.fragment.SecondScreenFragment
-import com.firsttask.itransition.viewModel.SecondFragmentViewModel
 
 class SecondActivity : AppCompatActivity() {
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
