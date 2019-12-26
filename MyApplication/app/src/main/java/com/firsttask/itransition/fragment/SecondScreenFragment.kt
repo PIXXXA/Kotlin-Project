@@ -14,10 +14,19 @@ import com.firsttask.itransition.STR2
 import com.firsttask.itransition.databinding.ActivityForSecondFragmentBinding
 import com.firsttask.itransition.viewModel.SecondFragmentViewModel
 import com.firsttask.itransition.viewModel.viewModelFactory.SecondFragmentViewModelFactory
+import javax.inject.Inject
 
 class SecondScreenFragment : Fragment() {
 
     private lateinit var binding: ActivityForSecondFragmentBinding
+
+    @Inject
+    lateinit var viewModelFactory: SecondFragmentViewModelFactory
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        BaseApplication.appComponent.inject(this)
+    }
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -32,18 +41,15 @@ class SecondScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if (arguments != null) {
 
-            val textSTR1 = arguments?.getString(STR1)
-            val textSTR2 = arguments?.getString(STR2)
+            val dateAdapter = arguments?.getString(STR1)
+            val coordinateAdapter = arguments?.getString(STR2)
 
-            val application = activity?.application as BaseApplication
-
-            val viewModelFactory = SecondFragmentViewModelFactory(application.restClient, textSTR2.toString(), textSTR1.toString(), application.secondFragmentResourceProvider)
             val viewModel = ViewModelProviders.of(this, viewModelFactory)
                     .get(SecondFragmentViewModel::class.java)
+            viewModel.dateAdapter = dateAdapter
+            viewModel.getRequest(coordinateAdapter)
             binding.lifecycleOwner = this
-
             binding.secondViewModel = viewModel
-
         }
     }
 

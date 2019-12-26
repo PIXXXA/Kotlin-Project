@@ -1,27 +1,28 @@
 package com.firsttask.itransition.viewModel
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.firsttask.itransition.KEY
 import com.firsttask.itransition.R
+import com.firsttask.itransition.ResourceProvider
 import com.firsttask.itransition.TAG
 import com.firsttask.itransition.rest.RestClient
 import com.firsttask.itransition.rest.model.ApiResponse
 import com.firsttask.itransition.rest.model.WeatherResponse
-import com.firsttask.itransition.ResourceProvider
 import retrofit2.Call
 import retrofit2.Response
 
-class SecondFragmentViewModel(val restClient: RestClient, val coordAdapter: String, val dateAdapter: String, resourceProvider: ResourceProvider) : ViewModel() {
+class SecondFragmentViewModel(val restClient: RestClient, val resourceProvider: ResourceProvider) : ViewModel() {
 
     val bodyKey = MutableLiveData<String>()
     val weather = MutableLiveData<String>()
+    var dateAdapter: String? = null
+    var coordinateAdapter: String? = null
 
-    init {
-
-        val getWeatherResponse = restClient.getDailyForecast()?.getLocationCode(KEY, coordAdapter)
+    fun getRequest(coordAdapter: String? = null) {
+        coordinateAdapter=coordAdapter
+        val getWeatherResponse = restClient.getDailyForecast()?.getLocationCode(KEY, coordinateAdapter)
         getWeatherResponse?.enqueue(object : retrofit2.Callback<ApiResponse> {
             override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                 if (t.localizedMessage != null) {
@@ -50,13 +51,5 @@ class SecondFragmentViewModel(val restClient: RestClient, val coordAdapter: Stri
                 })
             }
         })
-    }
-
-    fun getbodyKey(): LiveData<String> {
-        return bodyKey
-    }
-
-    fun getweather(): LiveData<String> {
-        return weather
     }
 }

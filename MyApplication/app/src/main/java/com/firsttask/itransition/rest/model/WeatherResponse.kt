@@ -24,13 +24,9 @@ class Temperature {
 class Minimum {
     @SerializedName("Value")
     var valueMin: Float? = 0.toFloat()
-    @SerializedName("Unit")
-    var unitMin: String? = null
 }
 
 class Maximum {
     @SerializedName("Value")
     var valueMax: Float? = 0.toFloat()
-    @SerializedName("Unit")
-    var unitMax: String? = null
 }

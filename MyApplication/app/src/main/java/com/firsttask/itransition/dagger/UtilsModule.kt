@@ -1,19 +1,23 @@
-//package com.firsttask.itransition.dagger
-//
-//import androidx.annotation.NonNull
-//import dagger.Module
-//import dagger.Provides
-//import javax.inject.Singleton
-//
-//@Module
-//class UtilsModule() {
-//    @Provides
-//    @NonNull
-//    @Singleton
-//    fun getRestClient() {
-//        return
-//    }
-//
-//
-//
-//}
+package com.firsttask.itransition.dagger
+
+import android.content.Context
+import com.firsttask.itransition.ResourceProvider
+import com.firsttask.itransition.rest.RestClient
+import dagger.Module
+import dagger.Provides
+import javax.inject.Singleton
+
+@Module
+class UtilsModule {
+    @Provides
+    @Singleton
+    fun getRestClient(): RestClient {
+        return RestClient()
+    }
+
+    @Provides
+    @Singleton
+    fun getResourceProvider(context: Context): ResourceProvider {
+        return ResourceProvider(context)
+    }
+}
