@@ -15,8 +15,8 @@ import retrofit2.Response
 
 class SecondFragmentViewModel(val restClient: RestClient, val resourceProvider: ResourceProvider) : ViewModel() {
 
-    val bodyKey = MutableLiveData<String>()
-    val weather = MutableLiveData<String>()
+    var bodyKey = MutableLiveData<String>()
+    var weather = MutableLiveData<String>()
     var dateAdapter: String? = null
     var coordinateAdapter: String? = null
     val imageUrl = "https://i.pinimg.com/originals/84/c5/97/84c597187f11c618c2558f57ac83f8de.jpg"

@@ -11,19 +11,18 @@ import com.firsttask.itransition.BaseApplication
 import com.firsttask.itransition.R
 import com.firsttask.itransition.STR1
 import com.firsttask.itransition.STR2
-import com.firsttask.itransition.adapter.loadImage
 import com.firsttask.itransition.databinding.ActivityForSecondFragmentBinding
 import com.firsttask.itransition.viewModel.SecondFragmentViewModel
 import com.firsttask.itransition.viewModel.viewModelFactory.SecondFragmentViewModelFactory
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.activity_for_second_fragment.*
+import javax.inject.Inject
 
 class SecondScreenFragment : Fragment() {
 
     private lateinit var binding: ActivityForSecondFragmentBinding
 
     @Inject
-    lateinit var viewModelFactory: SecondFragmentViewModelFactory
+    var viewModelFactory: SecondFragmentViewModelFactory? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +39,7 @@ class SecondScreenFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
         if (arguments != null) {
 
@@ -52,9 +52,32 @@ class SecondScreenFragment : Fragment() {
             viewModel.getRequest(coordinateAdapter)
             binding.lifecycleOwner = this
             binding.secondViewModel = viewModel
+
+
+
+            swipetorefresh.setOnRefreshListener {
+//                val cloneDateAdapter = viewModel.dateAdapter
+//                val cloneCoordinateAdapter = viewModel.coordinateAdapter
+//                val cloneBodyKey = viewModel.bodyKey.value
+//                val cloneWeather = viewModel.weather.value
+//
+//                viewModel.dateAdapter = ""
+//                viewModel.coordinateAdapter = ""
+//                viewModel.bodyKey.value = ""
+//                viewModel.weather.value = ""
+//
+//                viewModel.dateAdapter = cloneDateAdapter
+//                viewModel.coordinateAdapter = cloneCoordinateAdapter
+//                viewModel.bodyKey.value = cloneBodyKey
+//                viewModel.weather.value = cloneWeather
+
+                viewModel.getRequest(coordinateAdapter)
+
+                swipetorefresh.isRefreshing = false
+            }
+
         }
     }
-
     companion object {
         fun newInstance(SomeText1: String, someText2: String): SecondScreenFragment {
             val secondScreenFragment = SecondScreenFragment()
