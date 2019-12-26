@@ -20,7 +20,8 @@
             android:layout_width="@dimen/adapterPhotoDimens"
             android:layout_height="match_parent"
             android:contentDescription="@string/app_name"
-            app:imageUrl="@{secondViewModel.imageUrl}" />
+            app:imageUrl="@{secondViewModel.imageUrl}"
+            android:scaleType="fitXY"/>
 
         <LinearLayout
             android:layout_width="match_parent"
