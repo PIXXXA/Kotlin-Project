@@ -19,6 +19,7 @@ class SecondFragmentViewModel(val restClient: RestClient, val resourceProvider: 
     val weather = MutableLiveData<String>()
     var dateAdapter: String? = null
     var coordinateAdapter: String? = null
+    val imageUrl = "https://i.pinimg.com/originals/84/c5/97/84c597187f11c618c2558f57ac83f8de.jpg"
 
     fun getRequest(coordAdapter: String? = null) {
         coordinateAdapter=coordAdapter
@@ -52,4 +53,5 @@ class SecondFragmentViewModel(val restClient: RestClient, val resourceProvider: 
             }
         })
     }
+
 }

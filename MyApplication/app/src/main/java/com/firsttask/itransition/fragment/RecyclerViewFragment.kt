@@ -27,7 +27,7 @@ class RecyclerViewFragment : Fragment() {
 
         model = ViewModelProviders.of(this).get(FirstFragmentViewModel::class.java)
 
-        model.viewModelMethod()
+        model.recyclerViewData()
         val layoutManager: RecyclerView.LayoutManager
         val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.setHasFixedSize(true)

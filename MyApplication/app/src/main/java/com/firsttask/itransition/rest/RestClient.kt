@@ -17,9 +17,8 @@ class RestClient{
                 .addInterceptor(loggingInterceptor)
                 .build()
 
-        val gson = GsonBuilder().create()
         val retrofit = Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
                 .baseUrl("http://dataservice.accuweather.com")
                 .client(client)
                 .build()

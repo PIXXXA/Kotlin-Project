@@ -11,10 +11,12 @@ import com.firsttask.itransition.BaseApplication
 import com.firsttask.itransition.R
 import com.firsttask.itransition.STR1
 import com.firsttask.itransition.STR2
+import com.firsttask.itransition.adapter.loadImage
 import com.firsttask.itransition.databinding.ActivityForSecondFragmentBinding
 import com.firsttask.itransition.viewModel.SecondFragmentViewModel
 import com.firsttask.itransition.viewModel.viewModelFactory.SecondFragmentViewModelFactory
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.activity_for_second_fragment.*
 
 class SecondScreenFragment : Fragment() {
 

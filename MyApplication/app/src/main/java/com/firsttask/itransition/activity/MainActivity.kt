@@ -1,9 +1,7 @@
 package com.firsttask.itransition.activity
 
-import androidx.appcompat.app.AppCompatActivity
-
 import android.os.Bundle
-
+import androidx.appcompat.app.AppCompatActivity
 import com.firsttask.itransition.R
 
 class MainActivity : AppCompatActivity() {
