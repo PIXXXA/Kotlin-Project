@@ -17,13 +17,13 @@ class SecondFragmentViewModel(val restClient: RestClient, val resourceProvider: 
 
     var bodyKey = MutableLiveData<String>()
     var weather = MutableLiveData<String>()
-    var dateAdapter: String? = null
-    var coordinateAdapter: String? = null
+    var dateAdapter = MutableLiveData<String?>()
+    var coordinateAdapter = MutableLiveData<String?>()
     val imageUrl = "https://i.pinimg.com/originals/84/c5/97/84c597187f11c618c2558f57ac83f8de.jpg"
 
     fun getRequest(coordAdapter: String? = null) {
-        coordinateAdapter=coordAdapter
-        val getWeatherResponse = restClient.getDailyForecast()?.getLocationCode(KEY, coordinateAdapter)
+        coordinateAdapter.value = coordAdapter
+        val getWeatherResponse = restClient.getDailyForecast()?.getLocationCode(KEY, coordinateAdapter.value)
         getWeatherResponse?.enqueue(object : retrofit2.Callback<ApiResponse> {
             override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                 if (t.localizedMessage != null) {
@@ -37,6 +37,7 @@ class SecondFragmentViewModel(val restClient: RestClient, val resourceProvider: 
 
                 weatherKeyRequest?.enqueue(object : retrofit2.Callback<WeatherResponse> {
                     override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
+                        Log.d(TAG, t.localizedMessage!!)
                     }
 
                     override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
