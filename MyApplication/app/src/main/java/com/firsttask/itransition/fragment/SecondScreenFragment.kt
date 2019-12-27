@@ -52,7 +52,6 @@ class SecondScreenFragment : Fragment() {
             viewModel.getRequest(coordinateAdapter)
             binding.lifecycleOwner = this
             binding.secondViewModel = viewModel
-
             swipetorefresh.setOnRefreshListener {
                 asdf(coordinateAdapter)
                 swipetorefresh.isRefreshing = false
