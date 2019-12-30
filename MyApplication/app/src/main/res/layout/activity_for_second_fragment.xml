@@ -10,44 +10,36 @@
             type="com.firsttask.itransition.viewModel.SecondFragmentViewModel" />
     </data>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipetorefresh"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:theme="@style/colorTextView">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/upperImage"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="0dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            app:imageUrl="@{secondViewModel.imageUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/upperImage"
-                android:layout_width="@dimen/adapterPhotoDimens"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/app_name"
-                android:scaleType="fitXY"
-                app:imageUrl="@{secondViewModel.imageUrl}" />
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipetorefresh"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@{secondViewModel.dateAdapter}" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@{secondViewModel.coordinateAdapter}" />
 
                 <TextView
                     android:id="@+id/textView"
@@ -64,7 +56,23 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="@{secondViewModel.weather}" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@{secondViewModel.coordinateAdapter}" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@{secondViewModel.dateAdapter}" />
             </LinearLayout>
-        </LinearLayout>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
