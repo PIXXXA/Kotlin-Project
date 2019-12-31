@@ -53,13 +53,13 @@ class SecondScreenFragment : Fragment() {
             binding.lifecycleOwner = this
             binding.secondViewModel = viewModel
             swipetorefresh.setOnRefreshListener {
-                asdf(coordinateAdapter)
+                viewModelRefresh(coordinateAdapter)
                 swipetorefresh.isRefreshing = false
             }
         }
     }
 
-    fun asdf(coordinateAdapter: String?) {
+    fun viewModelRefresh(coordinateAdapter: String?) {
         viewModel.coordinateAdapter.value = ""
         viewModel.bodyKey.value = ""
         viewModel.weather.value = ""

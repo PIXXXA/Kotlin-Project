@@ -7,13 +7,13 @@ import com.firsttask.itransition.KEY
 import com.firsttask.itransition.R
 import com.firsttask.itransition.ResourceProvider
 import com.firsttask.itransition.TAG
-import com.firsttask.itransition.rest.RestClient
 import com.firsttask.itransition.rest.model.ApiResponse
 import com.firsttask.itransition.rest.model.WeatherResponse
+import com.firsttask.itransition.rest.service.WeatherService
 import retrofit2.Call
 import retrofit2.Response
 
-class SecondFragmentViewModel(val restClient: RestClient, val resourceProvider: ResourceProvider) : ViewModel() {
+class SecondFragmentViewModel(val weatherService: WeatherService, val resourceProvider: ResourceProvider) : ViewModel() {
 
     var bodyKey = MutableLiveData<String>()
     var weather = MutableLiveData<String>()
@@ -23,7 +23,7 @@ class SecondFragmentViewModel(val restClient: RestClient, val resourceProvider: 
 
     fun getRequest(coordAdapter: String? = null) {
         coordinateAdapter.value = coordAdapter
-        val getWeatherResponse = restClient.getDailyForecast()?.getLocationCode(KEY, coordinateAdapter.value)
+        val getWeatherResponse = weatherService.getLocationCode(KEY, coordinateAdapter.value)
         getWeatherResponse?.enqueue(object : retrofit2.Callback<ApiResponse> {
             override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                 if (t.localizedMessage != null) {
@@ -33,7 +33,7 @@ class SecondFragmentViewModel(val restClient: RestClient, val resourceProvider: 
 
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                 bodyKey.value = response.body()?.key
-                val weatherKeyRequest = restClient.getDailyForecast()?.getWeather(bodyKey.value, KEY)
+                val weatherKeyRequest = weatherService.getWeather(bodyKey.value, KEY)
 
                 weatherKeyRequest?.enqueue(object : retrofit2.Callback<WeatherResponse> {
                     override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {

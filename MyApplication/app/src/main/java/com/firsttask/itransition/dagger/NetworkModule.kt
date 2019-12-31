@@ -1,31 +1,43 @@
-package com.firsttask.itransition.rest
+package com.firsttask.itransition.dagger
 
 import com.firsttask.itransition.rest.service.WeatherService
 import com.google.gson.GsonBuilder
+import dagger.Module
+import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
-class RestClient{
-    private var weatherService: WeatherService? = null
-
-    init {
+@Module
+class NetworkModule {
+    @Provides
+    @Singleton
+    fun httpRequest(): OkHttpClient{
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
                 .build()
+        return client
+    }
 
+    @Provides
+    @Singleton
+    fun retrofitBuild(client: OkHttpClient): Retrofit{
         val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
                 .baseUrl("http://dataservice.accuweather.com")
                 .client(client)
                 .build()
-        weatherService = retrofit.create(WeatherService::class.java)
+        return retrofit
     }
 
-    fun getDailyForecast(): WeatherService? {
+    @Provides
+    @Singleton
+    fun serviceCreate(retrofit: Retrofit): WeatherService {
+        val weatherService = retrofit.create(WeatherService::class.java)
         return weatherService
     }
 }
