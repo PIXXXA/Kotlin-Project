@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.firsttask.itransition.BaseApplication
 import com.firsttask.itransition.R
 import com.firsttask.itransition.STR1
@@ -45,7 +45,7 @@ class SecondScreenFragment : Fragment() {
             val dateAdapter = arguments?.getString(STR1)
             val coordinateAdapter = arguments?.getString(STR2)
 
-            viewModel = ViewModelProviders.of(this, viewModelFactory)
+            viewModel = ViewModelProvider(this, viewModelFactory)
                     .get(SecondFragmentViewModel::class.java)
 
             viewModel.dateAdapter.value = dateAdapter
