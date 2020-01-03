@@ -10,8 +10,6 @@ class WeatherResponse {
 class DailyForecasts {
     @SerializedName("Temperature")
     var temperature: Temperature? = null
-    @SerializedName("Date")
-    var nowDate: String? = null
 }
 
 class Temperature {

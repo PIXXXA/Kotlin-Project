@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@{ secondViewModel.bodyKey}" />
+                    android:text="@{ secondViewModel.dateAdapter}" />
 
                 <TextView
                     android:id="@+id/textView3"
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@{secondViewModel.weather}" />
+                    android:text="@{secondViewModel.coordinateAdapter}" />
 
                 <TextView
                     android:id="@+id/textView2"
@@ -63,7 +63,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@{secondViewModel.coordinateAdapter}" />
+                    android:text="@{secondViewModel.bodyKey}"
+                    />
 
                 <TextView
                     android:id="@+id/textView1"
@@ -71,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@{secondViewModel.dateAdapter}" />
+                    android:text="@{secondViewModel.weather}" />
             </LinearLayout>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

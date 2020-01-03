@@ -3,13 +3,13 @@ package com.firsttask.itransition.viewModel.viewModelFactory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.firsttask.itransition.ResourceProvider
-import com.firsttask.itransition.rest.service.WeatherService
+import com.firsttask.itransition.repository.ViewModelRepository
 
-class SecondFragmentViewModelFactory(val weatherService: WeatherService,val resourceProvider: ResourceProvider)
+class SecondFragmentViewModelFactory(private val viewModelRepository: ViewModelRepository, private val resourceProvider: ResourceProvider)
     : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return modelClass.getConstructor(WeatherService::class.java, ResourceProvider::class.java)
-                .newInstance(weatherService, resourceProvider)
+        return modelClass.getConstructor(ViewModelRepository::class.java, ResourceProvider::class.java)
+                .newInstance(viewModelRepository, resourceProvider)
     }
 }

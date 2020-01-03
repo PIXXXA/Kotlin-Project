@@ -2,13 +2,20 @@ package com.firsttask.itransition.viewModel
 
 import androidx.lifecycle.ViewModel
 import com.firsttask.itransition.entity.RecyclerViewEntity
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import java.util.*
 
 class FirstFragmentViewModel : ViewModel() {
     val exampleItems = ArrayList<RecyclerViewEntity>()
 
     fun recyclerViewData() {
-        exampleItems.add(RecyclerViewEntity("25.01.2019", "52,27"))
-        exampleItems.add(RecyclerViewEntity("26.01.2019", "29,52"))
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS" , Locale.getDefault())
+        val getDate = dateFormat.format(Date())
+        exampleItems.add(RecyclerViewEntity(getDate, "52,27"))
+        exampleItems.add(RecyclerViewEntity(getDate, "29,52"))
     }
 }
