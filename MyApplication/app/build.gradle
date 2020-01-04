@@ -3,11 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-//def apikeyPropertiesFile = rootProject.file("apikey.properties")
-//def apikeyProperties = new Properties()
-//apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
-
-
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -37,6 +32,8 @@ android {
 }
 
 dependencies {
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
 
     implementation 'com.squareup.picasso:picasso:2.3.3'
 

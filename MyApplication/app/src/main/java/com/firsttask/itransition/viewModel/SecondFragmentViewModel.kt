@@ -5,10 +5,10 @@ import androidx.lifecycle.ViewModel
 import com.firsttask.itransition.R
 import com.firsttask.itransition.ResourceProvider
 import com.firsttask.itransition.repository.ViewModelCallBack
-import com.firsttask.itransition.repository.ViewModelRepository
+import com.firsttask.itransition.repository.SecondViewModelRepository
 import com.firsttask.itransition.rest.model.WeatherResponse
 
-class SecondFragmentViewModel(private val viewModelRepository: ViewModelRepository, private val resourceProvider: ResourceProvider) : ViewModel() {
+class SecondFragmentViewModel(private val secondViewModelRepository: SecondViewModelRepository, private val resourceProvider: ResourceProvider) : ViewModel() {
 
     var bodyKey = MutableLiveData<String?>()
     var weather = MutableLiveData<String?>()
@@ -19,9 +19,9 @@ class SecondFragmentViewModel(private val viewModelRepository: ViewModelReposito
     fun getRequest(coordAdapter: String? = null) {
         coordinateAdapter.value = coordAdapter
 
-        viewModelRepository.getRetrofitRequest(coordAdapter,
+        secondViewModelRepository.getRetrofitRequest(coordAdapter,
                 object : ViewModelCallBack {
-                    override fun onSucess(stringBuilder: WeatherResponse, locationKey: String?) {
+                    override fun onSuccess(stringBuilder: WeatherResponse, locationKey: String?) {
                         stringBuilder.let { getWeather ->
                             val weatherData =
                                     "\n${resourceProvider.getString(R.string.temp_max)}${getWeather.dailyForecasts?.first()?.temperature?.maximum?.valueMax}" +

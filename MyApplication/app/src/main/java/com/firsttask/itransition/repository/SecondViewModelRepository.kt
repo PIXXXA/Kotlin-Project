@@ -9,7 +9,7 @@ import com.firsttask.itransition.rest.service.WeatherService
 import retrofit2.Call
 import retrofit2.Response
 
-class ViewModelRepository(val weatherService: WeatherService) {
+class SecondViewModelRepository(val weatherService: WeatherService) {
 
     fun getRetrofitRequest(coordAdapter: String? = null, viewModelCallBack: ViewModelCallBack) {
 
@@ -33,7 +33,7 @@ class ViewModelRepository(val weatherService: WeatherService) {
 
                     override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
                         val weatherResponse = response.body()
-                        weatherResponse?.let { viewModelCallBack.onSucess(weatherResponse, locationKey) }
+                        weatherResponse?.let { viewModelCallBack.onSuccess(weatherResponse, locationKey) }
                     }
                 })
             }

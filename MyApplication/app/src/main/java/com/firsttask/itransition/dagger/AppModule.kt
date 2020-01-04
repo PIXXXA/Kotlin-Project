@@ -9,7 +9,7 @@ import javax.inject.Singleton
 class AppModule(private val context: Context) {
     @Provides
     @Singleton
-    fun provideContext(): Context {
+    fun secondProvideContext(): Context {
         return context
     }
 }

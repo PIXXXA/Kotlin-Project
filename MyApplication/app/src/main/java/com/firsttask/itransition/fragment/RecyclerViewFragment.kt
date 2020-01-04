@@ -8,13 +8,20 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.firsttask.itransition.BaseApplication
 import com.firsttask.itransition.R
 import com.firsttask.itransition.adapter.RecyclerViewAdapter
 import com.firsttask.itransition.viewModel.FirstFragmentViewModel
+import com.firsttask.itransition.viewModel.SecondFragmentViewModel
+import com.firsttask.itransition.viewModel.viewModelFactory.FirstViewModelFactory
+import javax.inject.Inject
 
 class RecyclerViewFragment : Fragment() {
 
-    private lateinit var model: FirstFragmentViewModel
+    @Inject
+    lateinit var firstViewModelFactory: FirstViewModelFactory
+
+    private lateinit var viewModel: FirstFragmentViewModel
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -25,16 +32,22 @@ class RecyclerViewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        model = ViewModelProvider(this).get(FirstFragmentViewModel::class.java)
+        viewModel = ViewModelProvider(this, firstViewModelFactory)
+                .get(FirstFragmentViewModel::class.java)
 
-        model.recyclerViewData()
+        viewModel.getRecyclerView()
         val layoutManager: RecyclerView.LayoutManager
         val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(activity)
-        val adapt = RecyclerViewAdapter(model.exampleItems)
+        val adapt = RecyclerViewAdapter(viewModel.exampleItems)
         recyclerView.adapter = adapt
         recyclerView.layoutManager = layoutManager
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        BaseApplication.appComponent.inject(this)
     }
 }
 
