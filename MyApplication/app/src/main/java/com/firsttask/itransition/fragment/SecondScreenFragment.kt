@@ -2,6 +2,7 @@ package com.firsttask.itransition.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -57,6 +58,9 @@ class SecondScreenFragment : Fragment() {
                 swipetorefresh.isRefreshing = false
             }
         }
+
+
+
     }
 
     fun viewModelRefresh(coordinateAdapter: String?) {

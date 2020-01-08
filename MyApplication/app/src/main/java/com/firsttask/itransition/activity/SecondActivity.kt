@@ -1,10 +1,13 @@
 package com.firsttask.itransition.activity
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.firsttask.itransition.DATA
 import com.firsttask.itransition.R
 import com.firsttask.itransition.TEMP
+import com.firsttask.itransition.fragment.SecondFragmentOftwoFragmentForSecondActivity
 import com.firsttask.itransition.fragment.SecondScreenFragment
 
 class SecondActivity : AppCompatActivity() {
@@ -25,5 +28,24 @@ class SecondActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.frameLayout, fragment)
         fragmentTransaction.commit()
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.fragment_second_menu,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id=item.itemId
+        when(id){
+            R.id.item_menu ->{
+                val fragment = SecondFragmentOftwoFragmentForSecondActivity()
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.frameLayout, fragment)
+                fragmentTransaction.commit()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 }
 

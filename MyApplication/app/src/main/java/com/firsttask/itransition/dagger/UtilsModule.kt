@@ -2,6 +2,7 @@ package com.firsttask.itransition.dagger
 
 import android.content.Context
 import com.firsttask.itransition.ResourceProvider
+import com.firsttask.itransition.db.AppDatabase
 import com.firsttask.itransition.repository.FirstViewModelRepository
 import com.firsttask.itransition.repository.SecondViewModelRepository
 import com.firsttask.itransition.rest.service.WeatherService
