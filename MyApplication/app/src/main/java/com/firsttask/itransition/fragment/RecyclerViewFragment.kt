@@ -12,7 +12,6 @@ import com.firsttask.itransition.BaseApplication
 import com.firsttask.itransition.R
 import com.firsttask.itransition.adapter.RecyclerViewAdapter
 import com.firsttask.itransition.viewModel.FirstFragmentViewModel
-import com.firsttask.itransition.viewModel.SecondFragmentViewModel
 import com.firsttask.itransition.viewModel.viewModelFactory.FirstViewModelFactory
 import javax.inject.Inject
 

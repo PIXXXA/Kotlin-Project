@@ -8,7 +8,7 @@ import java.util.*
 class FirstFragmentViewModel(private val firstViewModelRepository: FirstViewModelRepository) : ViewModel() {
     val exampleItems = ArrayList<RecyclerViewEntity>()
 
-    fun getRecyclerView(){
+    fun getRecyclerView() {
         firstViewModelRepository.getRecyclerViewData(exampleItems)
     }
 }

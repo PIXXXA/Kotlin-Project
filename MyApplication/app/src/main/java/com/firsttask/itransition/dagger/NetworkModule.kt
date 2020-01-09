@@ -1,5 +1,6 @@
 package com.firsttask.itransition.dagger
 
+import com.firsttask.itransition.BASE_URL
 import com.firsttask.itransition.rest.service.WeatherService
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -28,7 +29,7 @@ class NetworkModule {
     fun retrofitBuild(client: OkHttpClient): Retrofit{
         val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-                .baseUrl("http://dataservice.accuweather.com")
+                .baseUrl(BASE_URL)
                 .client(client)
                 .build()
         return retrofit

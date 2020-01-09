@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.firsttask.itransition.NAME_OF_DB
 import com.firsttask.itransition.db.dao.WeatherDao
 import com.firsttask.itransition.db.entity.WeatherEntity
 
@@ -20,7 +21,7 @@ abstract class AppDatabase : RoomDatabase() {
                 synchronized(AppDatabase::class){
                     instance = Room.databaseBuilder(
                             context.applicationContext,
-                            AppDatabase::class.java , "weatherDB"
+                            AppDatabase::class.java, NAME_OF_DB
                     ).build()
                 }
             }

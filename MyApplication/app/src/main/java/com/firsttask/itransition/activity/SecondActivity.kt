@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.firsttask.itransition.DATA
 import com.firsttask.itransition.R
 import com.firsttask.itransition.TEMP
-import com.firsttask.itransition.fragment.SecondFragmentOftwoFragmentForSecondActivity
+import com.firsttask.itransition.fragment.SecondFragmentOfTwoFragmentForSecondActivity
 import com.firsttask.itransition.fragment.SecondScreenFragment
 
 class SecondActivity : AppCompatActivity() {
@@ -38,7 +38,7 @@ class SecondActivity : AppCompatActivity() {
         val id=item.itemId
         when(id){
             R.id.item_menu ->{
-                val fragment = SecondFragmentOftwoFragmentForSecondActivity()
+                val fragment = SecondFragmentOfTwoFragmentForSecondActivity()
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
                 fragmentTransaction.replace(R.id.frameLayout, fragment)
                 fragmentTransaction.commit()

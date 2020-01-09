@@ -2,6 +2,7 @@ package com.firsttask.itransition.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.firsttask.itransition.IMAGE_URL
 import com.firsttask.itransition.R
 import com.firsttask.itransition.ResourceProvider
 import com.firsttask.itransition.db.AppDatabase
@@ -20,7 +21,7 @@ class SecondFragmentViewModel(private val secondViewModelRepository: SecondViewM
     var weather = MutableLiveData<String?>()
     var dateAdapter = MutableLiveData<String?>()
     var coordinateAdapter = MutableLiveData<String?>()
-    val imageUrl = "https://i.pinimg.com/originals/84/c5/97/84c597187f11c618c2558f57ac83f8de.jpg"
+    val imageUrl = IMAGE_URL
 
     fun getRequest(coordAdapter: String? = null) {
         coordinateAdapter.value = coordAdapter
@@ -36,7 +37,7 @@ class SecondFragmentViewModel(private val secondViewModelRepository: SecondViewM
                         }
                         bodyKey.value = locationKey
 
-                        suspend fun workA(){
+                        suspend fun workA() {
                             appDatabase.weatherDao().insert(WeatherEntity(0, bodyKey.value, dateAdapter.value, coordinateAdapter.value, weather.value))
                         }
                     }
