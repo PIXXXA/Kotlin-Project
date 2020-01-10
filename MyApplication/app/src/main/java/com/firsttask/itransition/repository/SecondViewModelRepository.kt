@@ -13,7 +13,6 @@ class SecondViewModelRepository(val weatherService: WeatherService) {
 
     fun getRetrofitRequest(coordAdapter: String? = null, viewModelCallBack: ViewModelCallBack) {
 
-
         val getWeatherResponse = weatherService.getLocationCode(CONSUMERKEY, coordAdapter)
         getWeatherResponse?.enqueue(object : retrofit2.Callback<ApiResponse> {
             override fun onFailure(call: Call<ApiResponse>, t: Throwable) {

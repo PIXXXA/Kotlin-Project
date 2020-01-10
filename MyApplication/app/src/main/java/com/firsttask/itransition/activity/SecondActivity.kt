@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.firsttask.itransition.DATA
-import com.firsttask.itransition.R
-import com.firsttask.itransition.TEMP
+import com.firsttask.itransition.*
 import com.firsttask.itransition.fragment.SecondFragmentOfTwoFragmentForSecondActivity
 import com.firsttask.itransition.fragment.SecondScreenFragment
 
@@ -15,16 +13,16 @@ class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-        var text2 = ""
-        var text1 = ""
+        var coordinateAdapter = ""
+        var dateAdapter = ""
 
         if (intent != null) {
-            text1 = intent.getStringExtra(DATA)
-            text2 = intent.getStringExtra(TEMP)
+            dateAdapter = intent.getStringExtra(DATA)
+            coordinateAdapter = intent.getStringExtra(TEMP)
         }
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        val fragment = SecondScreenFragment.newInstance(text1, text2)
+        val fragment = SecondScreenFragment.newInstance(dateAdapter, coordinateAdapter)
         fragmentTransaction.replace(R.id.frameLayout, fragment)
         fragmentTransaction.commit()
     }
@@ -38,8 +36,8 @@ class SecondActivity : AppCompatActivity() {
         val id=item.itemId
         when(id){
             R.id.item_menu ->{
-                val fragment = SecondFragmentOfTwoFragmentForSecondActivity()
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
+                val fragment = SecondFragmentOfTwoFragmentForSecondActivity.newInstance()
                 fragmentTransaction.replace(R.id.frameLayout, fragment)
                 fragmentTransaction.commit()
             }

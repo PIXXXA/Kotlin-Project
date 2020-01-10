@@ -14,18 +14,19 @@ import com.firsttask.itransition.db.entity.WeatherEntity
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun weatherDao(): WeatherDao
-    companion object {
-        private var instance: AppDatabase? = null
-        fun getDatabase(context: Context):AppDatabase?{
-            if(instance ==null){
-                synchronized(AppDatabase::class){
-                    instance = Room.databaseBuilder(
-                            context.applicationContext,
-                            AppDatabase::class.java, NAME_OF_DB
-                    ).build()
-                }
-            }
-            return instance
-        }
-    }
+
+//    companion object {
+//        private var instance: AppDatabase? = null
+//        fun getDatabase(context: Context):AppDatabase{
+//            if(instance ==null){
+//                synchronized(AppDatabase::class){
+//                    instance = Room.databaseBuilder(
+//                            context.applicationContext,
+//                            AppDatabase::class.java, NAME_OF_DB
+//                    ).build()
+//                }
+//            }
+//            return instance!!
+//        }
+//    }
 }

@@ -10,12 +10,10 @@ import com.firsttask.itransition.db.entity.WeatherEntity
 import com.firsttask.itransition.repository.SecondViewModelRepository
 import com.firsttask.itransition.repository.ViewModelCallBack
 import com.firsttask.itransition.rest.model.WeatherResponse
-import javax.inject.Inject
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class SecondFragmentViewModel(private val secondViewModelRepository: SecondViewModelRepository, private val resourceProvider: ResourceProvider) : ViewModel() {
-
-    @Inject
-    lateinit var appDatabase: AppDatabase
+class SecondFragmentViewModel(private val secondViewModelRepository: SecondViewModelRepository, private val resourceProvider: ResourceProvider , private val appDatabase: AppDatabase) : ViewModel() {
 
     var bodyKey = MutableLiveData<String?>()
     var weather = MutableLiveData<String?>()
@@ -37,8 +35,8 @@ class SecondFragmentViewModel(private val secondViewModelRepository: SecondViewM
                         }
                         bodyKey.value = locationKey
 
-                        suspend fun workA() {
-                            appDatabase.weatherDao().insert(WeatherEntity(0, bodyKey.value, dateAdapter.value, coordinateAdapter.value, weather.value))
+                        GlobalScope.launch {
+                            appDatabase.weatherDao().insert(WeatherEntity(0 ,bodyKey.value, dateAdapter.value, coordinateAdapter.value, weather.value))
                         }
                     }
                 })
