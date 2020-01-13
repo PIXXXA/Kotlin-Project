@@ -1,7 +1,7 @@
 package com.firsttask.itransition.repository
 
 import android.util.Log
-import com.firsttask.itransition.CONSUMERKEY
+import com.firsttask.itransition.CONSUMER_KEY
 import com.firsttask.itransition.TAG
 import com.firsttask.itransition.rest.model.ApiResponse
 import com.firsttask.itransition.rest.model.WeatherResponse
@@ -13,7 +13,7 @@ class SecondViewModelRepository(val weatherService: WeatherService) {
 
     fun getRetrofitRequest(coordAdapter: String? = null, viewModelCallBack: ViewModelCallBack) {
 
-        val getWeatherResponse = weatherService.getLocationCode(CONSUMERKEY, coordAdapter)
+        val getWeatherResponse = weatherService.getLocationCode(CONSUMER_KEY, coordAdapter)
         getWeatherResponse?.enqueue(object : retrofit2.Callback<ApiResponse> {
             override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                 if (t.localizedMessage != null) {
@@ -22,12 +22,13 @@ class SecondViewModelRepository(val weatherService: WeatherService) {
             }
 
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
-                val weatherKeyRequest = weatherService.getWeather(response.body()?.key, CONSUMERKEY)
+                val weatherKeyRequest = weatherService.getWeather(response.body()?.key, CONSUMER_KEY)
                 val locationKey = response.body()?.key
 
                 weatherKeyRequest?.enqueue(object : retrofit2.Callback<WeatherResponse> {
                     override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
                         Log.d(TAG, t.localizedMessage!!)
+//        progressBar.visibility = View.VISIBLE
                     }
 
                     override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {

@@ -36,7 +36,7 @@ class SecondFragmentViewModel(private val secondViewModelRepository: SecondViewM
                         bodyKey.value = locationKey
 
                         GlobalScope.launch {
-                            appDatabase.weatherDao().insert(WeatherEntity(0 ,bodyKey.value, dateAdapter.value, coordinateAdapter.value, weather.value))
+                            appDatabase.weatherDao().insert(WeatherEntity(null ,bodyKey.value, dateAdapter.value, coordinateAdapter.value, weather.value))
                         }
                     }
                 })

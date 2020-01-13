@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "WeatherTable")
 data class WeatherEntity(
         @PrimaryKey(autoGenerate = true)
-        var weatherPK:Int,
+        var weatherPK:Int?,
         var weatherKey: String? = null,
         var currentDate: String? = null,
         var weatherLocation: String? = null,

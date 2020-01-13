@@ -15,6 +15,7 @@ import com.firsttask.itransition.databinding.ActivityForSecondFragmentBinding
 import com.firsttask.itransition.viewModel.SecondFragmentViewModel
 import com.firsttask.itransition.viewModel.viewModelFactory.SecondFragmentViewModelFactory
 import kotlinx.android.synthetic.main.activity_for_second_fragment.*
+import kotlinx.android.synthetic.main.activity_second.*
 import javax.inject.Inject
 
 class SecondScreenFragment : Fragment() {

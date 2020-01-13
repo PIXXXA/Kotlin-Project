@@ -14,6 +14,7 @@ import com.firsttask.itransition.R
 import com.firsttask.itransition.adapter.RecyclerViewAdapterForSecondActivity
 import com.firsttask.itransition.viewModel.SecondFragmentOfTwoFragmentViewModel
 import com.firsttask.itransition.viewModel.viewModelFactory.SecondFragmentOfTwoFragmentFactory
+import kotlinx.android.synthetic.main.activity_second.*
 import javax.inject.Inject
 
 class SecondFragmentOfTwoFragmentForSecondActivity : Fragment() {
@@ -39,15 +40,15 @@ class SecondFragmentOfTwoFragmentForSecondActivity : Fragment() {
         viewModel=ViewModelProvider(this , secondFragmentOfTwoFragmentFactory)
                 .get(SecondFragmentOfTwoFragmentViewModel::class.java)
 
-        viewModel.getRecyclerview()
+        viewModel.getRecyclerView()
         val layoutManager:RecyclerView.LayoutManager
         val recyclerView:RecyclerView = view.findViewById(R.id.recycler_view_second_fragment)
-        recyclerView.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(activity)
         val adapt = RecyclerViewAdapterForSecondActivity(viewModel.exampleItems)
         recyclerView.adapter = adapt
         recyclerView.layoutManager = layoutManager
     }
+
     companion object {
         fun newInstance(): SecondFragmentOfTwoFragmentForSecondActivity {
             return SecondFragmentOfTwoFragmentForSecondActivity()

@@ -37,10 +37,10 @@ class RecyclerViewAdapterForSecondActivity(private val recyclerViewEntityItem: A
 
             itemView.setOnClickListener{v->
                 val intent = Intent(v.context , SecondActivity::class.java)
-                intent.putExtra(CURRENTDATE , recyclerViewEntityForSecondActivity.dateWeather)
+                intent.putExtra(CURRENT_DATE , recyclerViewEntityForSecondActivity.dateWeather)
                 intent.putExtra(COORDINATE, recyclerViewEntityForSecondActivity.coordinateWeather)
-                intent.putExtra(BODYKEY , recyclerViewEntityForSecondActivity.bodyKeyWeather)
-                intent.putExtra(WEATHERDATA , recyclerViewEntityForSecondActivity.allWeather)
+                intent.putExtra(BODY_KEY , recyclerViewEntityForSecondActivity.bodyKeyWeather)
+                intent.putExtra(WEATHER_DATA , recyclerViewEntityForSecondActivity.allWeather)
                 v.context.startActivity(intent)
             }
 
