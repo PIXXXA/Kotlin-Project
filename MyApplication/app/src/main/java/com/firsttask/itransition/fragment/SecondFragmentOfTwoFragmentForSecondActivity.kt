@@ -6,15 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firsttask.itransition.BaseApplication
 import com.firsttask.itransition.R
 import com.firsttask.itransition.adapter.RecyclerViewAdapterForSecondActivity
+import com.firsttask.itransition.entity.RecyclerViewEntityForSecondActivity
 import com.firsttask.itransition.viewModel.SecondFragmentOfTwoFragmentViewModel
 import com.firsttask.itransition.viewModel.viewModelFactory.SecondFragmentOfTwoFragmentFactory
-import kotlinx.android.synthetic.main.activity_second.*
+import kotlinx.android.synthetic.main.recycler_view_for_second_fragment.*
 import javax.inject.Inject
 
 class SecondFragmentOfTwoFragmentForSecondActivity : Fragment() {
@@ -40,13 +42,18 @@ class SecondFragmentOfTwoFragmentForSecondActivity : Fragment() {
         viewModel=ViewModelProvider(this , secondFragmentOfTwoFragmentFactory)
                 .get(SecondFragmentOfTwoFragmentViewModel::class.java)
 
-        viewModel.getRecyclerView()
-        val layoutManager:RecyclerView.LayoutManager
-        val recyclerView:RecyclerView = view.findViewById(R.id.recycler_view_second_fragment)
-        layoutManager = LinearLayoutManager(activity)
-        val adapt = RecyclerViewAdapterForSecondActivity(viewModel.exampleItems)
-        recyclerView.adapter = adapt
-        recyclerView.layoutManager = layoutManager
+        viewModel.getRecyclerViewData()
+        val layoutManager = LinearLayoutManager(context)
+        updateAdapter(arrayListOf())
+        viewModel.exampleItems.observe(viewLifecycleOwner ,  Observer<ArrayList<RecyclerViewEntityForSecondActivity>> {
+            updateAdapter(it)
+        })
+        recycler_view_second_fragment.layoutManager = layoutManager
+    }
+
+    private fun updateAdapter(list: ArrayList<RecyclerViewEntityForSecondActivity>) {
+        val recyclerViewAdapterForSecondActivity = RecyclerViewAdapterForSecondActivity(list)
+        recycler_view_second_fragment.adapter = recyclerViewAdapterForSecondActivity
     }
 
     companion object {

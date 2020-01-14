@@ -7,13 +7,15 @@ import kotlinx.coroutines.launch
 
 class SecondFragmentOfTwoFragmentViewModelRepository(private val appDatabase: AppDatabase) {
 
-    fun getRecyclerViewData(exampleItem: ArrayList<RecyclerViewEntityForSecondActivity> , historyCallBack: HistoryCallBack) {
+    fun getRecyclerViewData(historyCallBack: HistoryCallBack) {
 
         GlobalScope.launch {
-            exampleItem.addAll(appDatabase.weatherDao().getAllWeather().map {
+            val exampleItems: ArrayList<RecyclerViewEntityForSecondActivity> = arrayListOf()
+
+            exampleItems.addAll(appDatabase.weatherDao().getAllWeather().map {
                 RecyclerViewEntityForSecondActivity(it.currentDate, it.weatherLocation, it.weatherKey, it.weatherTemperature)
             })
-            historyCallBack.setRecyclerView(exampleItem = exampleItem)
+            historyCallBack.setRecyclerViewData(exampleItems)
         }
     }
 }
