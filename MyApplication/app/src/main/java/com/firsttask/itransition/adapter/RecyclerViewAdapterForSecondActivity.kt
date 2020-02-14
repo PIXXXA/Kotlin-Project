@@ -43,8 +43,6 @@ class RecyclerViewAdapterForSecondActivity(private val recyclerViewEntityItem: A
                 intent.putExtra(WEATHER_DATA , recyclerViewEntityForSecondActivity.allWeather)
                 v.context.startActivity(intent)
             }
-
         }
     }
-
 }

@@ -28,7 +28,6 @@ class SecondViewModelRepository(val weatherService: WeatherService) {
                 weatherKeyRequest?.enqueue(object : retrofit2.Callback<WeatherResponse> {
                     override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
                         Log.d(TAG, t.localizedMessage!!)
-//        progressBar.visibility = View.VISIBLE
                     }
 
                     override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {

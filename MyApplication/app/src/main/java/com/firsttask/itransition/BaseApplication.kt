@@ -13,7 +13,7 @@ class BaseApplication : Application() {
         appComponent = secondBuildComponent()
      }
 
-    fun secondBuildComponent(): AppComponent {
+    private fun secondBuildComponent(): AppComponent {
         return DaggerAppComponent.builder()
                 .appModule(AppModule(this))
                 .roomModule(RoomModule(this))

@@ -18,27 +18,24 @@ class NetworkModule {
     fun httpRequest(): OkHttpClient{
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        val client = OkHttpClient.Builder()
+        return OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
                 .build()
-        return client
     }
 
     @Provides
     @Singleton
     fun retrofitBuild(client: OkHttpClient): Retrofit{
-        val retrofit = Retrofit.Builder()
+        return Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
                 .baseUrl(BASE_URL)
                 .client(client)
                 .build()
-        return retrofit
     }
 
     @Provides
     @Singleton
     fun serviceCreate(retrofit: Retrofit): WeatherService {
-        val weatherService = retrofit.create(WeatherService::class.java)
-        return weatherService
+        return retrofit.create(WeatherService::class.java)
     }
 }
