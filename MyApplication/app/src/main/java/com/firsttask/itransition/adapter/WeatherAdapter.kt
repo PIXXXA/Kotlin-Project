@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.firsttask.itransition.*
 import com.firsttask.itransition.activity.WeatherActivity
 import com.firsttask.itransition.entity.Weather
-import kotlinx.android.synthetic.main.recycler_view_item_for_second_fragment.view.*
+import kotlinx.android.synthetic.main.history_recycler_view_item.view.*
 
 class WeatherAdapter(private val recyclerViewEntityItem: ArrayList<Weather>) : RecyclerView.Adapter<WeatherAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
             val v=LayoutInflater.from(parent.context)
-                    .inflate(R.layout.recycler_view_item_for_second_fragment,parent,false)
+                    .inflate(R.layout.history_recycler_view_item,parent,false)
             return MyViewHolder(v)
     }
 

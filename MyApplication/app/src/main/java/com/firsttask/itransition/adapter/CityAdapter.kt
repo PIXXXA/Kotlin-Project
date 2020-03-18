@@ -10,14 +10,14 @@ import com.firsttask.itransition.R
 import com.firsttask.itransition.TEMP
 import com.firsttask.itransition.activity.WeatherActivity
 import com.firsttask.itransition.entity.City
-import kotlinx.android.synthetic.main.recycler_view_item.view.*
+import kotlinx.android.synthetic.main.city_recycler_view_item.view.*
 import java.util.*
 
 class CityAdapter(private val cityItem: ArrayList<City>) : RecyclerView.Adapter<CityAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val v = LayoutInflater.from(parent.context)
-                .inflate(R.layout.recycler_view_item, parent, false)
+                .inflate(R.layout.city_recycler_view_item, parent, false)
         return MyViewHolder(v)
     }
 
@@ -33,13 +33,13 @@ class CityAdapter(private val cityItem: ArrayList<City>) : RecyclerView.Adapter<
     class MyViewHolder constructor(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(city: City) {
-            itemView.text1.text = city.data
-            itemView.text2.text = city.temp
+            itemView.text1.text = city.date
+            itemView.text2.text = city.coordinate
 
             itemView.setOnClickListener { v ->
                 val intent = Intent(v.context, WeatherActivity::class.java)
-                intent.putExtra(DATA, city.data)
-                intent.putExtra(TEMP, city.temp)
+                intent.putExtra(DATA, city.date)
+                intent.putExtra(TEMP, city.coordinate)
                 v.context.startActivity(intent)
             }
         }

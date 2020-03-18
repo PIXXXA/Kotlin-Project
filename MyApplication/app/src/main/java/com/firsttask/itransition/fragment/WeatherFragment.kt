@@ -14,7 +14,7 @@ import com.firsttask.itransition.STR2
 import com.firsttask.itransition.databinding.ActivityForSecondFragmentBinding
 import com.firsttask.itransition.viewModel.WeatherViewModel
 import com.firsttask.itransition.viewModel.viewModelFactory.WeatherFactory
-import kotlinx.android.synthetic.main.activity_for_second_fragment.*
+import kotlinx.android.synthetic.main.fragment_weather.*
 import javax.inject.Inject
 
 class WeatherFragment : Fragment() {
@@ -34,7 +34,7 @@ class WeatherFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.activity_for_second_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_weather, container, false)
         return binding.root
     }
 

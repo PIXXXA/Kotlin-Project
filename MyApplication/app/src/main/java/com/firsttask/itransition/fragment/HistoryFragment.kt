@@ -15,7 +15,7 @@ import com.firsttask.itransition.adapter.WeatherAdapter
 import com.firsttask.itransition.entity.Weather
 import com.firsttask.itransition.viewModel.HistoryViewModel
 import com.firsttask.itransition.viewModel.viewModelFactory.HistoryFactory
-import kotlinx.android.synthetic.main.recycler_view_for_second_fragment.*
+import kotlinx.android.synthetic.main.history_recycler_view.*
 import javax.inject.Inject
 
 class HistoryFragment : Fragment() {
@@ -32,7 +32,7 @@ class HistoryFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.recycler_view_for_second_fragment, container, false)
+        return inflater.inflate(R.layout.history_recycler_view, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -12,7 +12,7 @@ class WeatherActivity : AppCompatActivity() {
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_second)
+        setContentView(R.layout.activity_weather)
         var coordinateAdapter = ""
         var dateAdapter = ""
 
