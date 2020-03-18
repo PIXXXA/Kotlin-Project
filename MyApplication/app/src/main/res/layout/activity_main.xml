@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.CityActivity">
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.firsttask.itransition.fragment.RecyclerViewFragment"
+        android:name="com.firsttask.itransition.fragment.CityFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

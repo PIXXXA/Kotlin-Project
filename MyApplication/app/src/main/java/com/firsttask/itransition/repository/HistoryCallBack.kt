@@ -1,7 +1,7 @@
 package com.firsttask.itransition.repository
 
-import com.firsttask.itransition.entity.RecyclerViewEntityForSecondActivity
+import com.firsttask.itransition.entity.Weather
 
 interface HistoryCallBack {
-    fun setRecyclerViewData(exampleItem: ArrayList<RecyclerViewEntityForSecondActivity>)
+    fun setRecyclerViewData(exampleItem: ArrayList<Weather>)
 }

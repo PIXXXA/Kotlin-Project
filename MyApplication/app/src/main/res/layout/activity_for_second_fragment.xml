@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragment.SecondScreenFragment">
+    tools:context=".fragment.WeatherFragment">
 
     <data>
         <variable
             name="secondViewModel"
-            type="com.firsttask.itransition.viewModel.SecondFragmentViewModel" />
+            type="com.firsttask.itransition.viewModel.WeatherViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

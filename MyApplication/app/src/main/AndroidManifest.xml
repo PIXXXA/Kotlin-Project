@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.SecondActivity"></activity>
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.WeatherActivity"></activity>
+        <activity android:name=".activity.CityActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

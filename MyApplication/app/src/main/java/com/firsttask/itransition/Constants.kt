@@ -3,7 +3,7 @@ package com.firsttask.itransition
 const val CONSUMER_KEY = BuildConfig.CONSUMER_KEY
 const val STR1 = "TB1"
 const val STR2 = "TB2"
-const val TAG = "SecondActivity"
+const val TAG = "WeatherActivity"
 const val DATA = "Data"
 const val TEMP = "Temp"
 const val DATE_FORMAT = "yyyy-MM-dd HH:mm"
