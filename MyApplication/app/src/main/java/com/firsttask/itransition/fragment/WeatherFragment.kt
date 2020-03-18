@@ -11,7 +11,7 @@ import com.firsttask.itransition.BaseApplication
 import com.firsttask.itransition.R
 import com.firsttask.itransition.STR1
 import com.firsttask.itransition.STR2
-import com.firsttask.itransition.databinding.ActivityForSecondFragmentBinding
+import com.firsttask.itransition.databinding.FragmentWeatherBinding
 import com.firsttask.itransition.viewModel.WeatherViewModel
 import com.firsttask.itransition.viewModel.viewModelFactory.WeatherFactory
 import kotlinx.android.synthetic.main.fragment_weather.*
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 class WeatherFragment : Fragment() {
 
-    private lateinit var binding: ActivityForSecondFragmentBinding
+    private lateinit var binding: FragmentWeatherBinding
 
     @Inject
     lateinit var viewModelFactory: WeatherFactory

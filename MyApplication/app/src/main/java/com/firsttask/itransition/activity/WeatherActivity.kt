@@ -17,8 +17,8 @@ class WeatherActivity : AppCompatActivity() {
         var dateAdapter = ""
 
         if (intent != null) {
-            dateAdapter = intent.getStringExtra(DATA)
-            coordinateAdapter = intent.getStringExtra(TEMP)
+            dateAdapter = intent.getStringExtra(DATE)
+            coordinateAdapter = intent.getStringExtra(CITY_COORDINATE)
         }
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()

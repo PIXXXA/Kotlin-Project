@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firsttask.itransition.BaseApplication
 import com.firsttask.itransition.R
-import com.firsttask.itransition.adapter.WeatherAdapter
+import com.firsttask.itransition.adapter.HistoryAdapter
 import com.firsttask.itransition.entity.Weather
 import com.firsttask.itransition.viewModel.HistoryViewModel
 import com.firsttask.itransition.viewModel.viewModelFactory.HistoryFactory
@@ -51,7 +51,7 @@ class HistoryFragment : Fragment() {
     }
 
     private fun updateAdapter(list: ArrayList<Weather>) {
-        val recyclerViewAdapterForSecondActivity = WeatherAdapter(list)
+        val recyclerViewAdapterForSecondActivity = HistoryAdapter(list)
         recycler_view_second_fragment.adapter = recyclerViewAdapterForSecondActivity
     }
 

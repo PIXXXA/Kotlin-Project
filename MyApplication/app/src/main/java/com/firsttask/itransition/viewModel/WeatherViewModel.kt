@@ -29,7 +29,7 @@ class WeatherViewModel(private val weatherRepository: WeatherRepository, private
                     override fun onSuccess(stringBuilder: WeatherResponse, locationKey: String?) {
                         stringBuilder.let { getWeather ->
                             val weatherData =
-                                    "\n${resourceProvider.getString(R.string.temp_max)}${getWeather.dailyForecasts?.first()?.temperature?.maximum?.valueMax}" +
+                                    "${resourceProvider.getString(R.string.temp_max)}${getWeather.dailyForecasts?.first()?.temperature?.maximum?.valueMax}" +
                                             "\n${resourceProvider.getString(R.string.temp_min)}${getWeather.dailyForecasts?.first()?.temperature?.minimum?.valueMin}"
                             weather.value = weatherData
                         }

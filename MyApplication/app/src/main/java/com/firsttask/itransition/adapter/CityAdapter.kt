@@ -5,9 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.firsttask.itransition.DATA
+import com.firsttask.itransition.DATE
 import com.firsttask.itransition.R
-import com.firsttask.itransition.TEMP
+import com.firsttask.itransition.CITY_COORDINATE
+import com.firsttask.itransition.CITY_NAME
 import com.firsttask.itransition.activity.WeatherActivity
 import com.firsttask.itransition.entity.City
 import kotlinx.android.synthetic.main.city_recycler_view_item.view.*
@@ -33,13 +34,15 @@ class CityAdapter(private val cityItem: ArrayList<City>) : RecyclerView.Adapter<
     class MyViewHolder constructor(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(city: City) {
-            itemView.text1.text = city.date
-            itemView.text2.text = city.coordinate
+            itemView.cityDate.text = city.date
+            itemView.cityCoordinate.text = city.coordinate
+            itemView.cityName.text = city.name
 
             itemView.setOnClickListener { v ->
                 val intent = Intent(v.context, WeatherActivity::class.java)
-                intent.putExtra(DATA, city.date)
-                intent.putExtra(TEMP, city.coordinate)
+                intent.putExtra(DATE, city.date)
+                intent.putExtra(CITY_COORDINATE, city.coordinate)
+                intent.putExtra(CITY_NAME, city.name)
                 v.context.startActivity(intent)
             }
         }

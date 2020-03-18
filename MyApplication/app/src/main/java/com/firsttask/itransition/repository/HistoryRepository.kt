@@ -13,7 +13,7 @@ class HistoryRepository(private val appDatabase: AppDatabase) {
             val exampleItems: ArrayList<Weather> = arrayListOf()
 
             exampleItems.addAll(appDatabase.weatherDao().getAllWeather().map {
-                Weather(it.currentDate, it.weatherLocation, it.weatherKey, it.weatherTemperature)
+                Weather("Date: " + it.currentDate, "Coordinate: " + it.weatherLocation, "Code: " + it.weatherKey, it.weatherTemperature)
             })
             historyCallBack.setRecyclerViewData(exampleItems)
         }
